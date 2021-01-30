@@ -39,38 +39,42 @@ class MainActivity : AppCompatActivity() {
             viewModel.nextMem()
         }
     }
-    private fun bindMem(mem: Mem) {
-        Glide.with(this)
-            .load(StringBuilder(mem.gifUrl).insert(4, 's').toString())
-            .listener(object : RequestListener<Drawable> {
 
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    binding.progressBar.isVisible = false
-                    return false
-                }
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    binding.progressBar.isVisible = false
-                    return false
-                }
-            })
-            .error(R.drawable.ic_no_image_placeholder)
-            .into(binding.gifImageView)
+    private fun bindMem(mem: Mem) {
+        mem.gifUrl?.let {
+            Glide.with(this)
+                .load(StringBuilder(it).insert(4, 's').toString())
+                .listener(object : RequestListener<Drawable> {
+
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        binding.progressBar.isVisible = false
+                        return false
+                    }
+
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        binding.progressBar.isVisible = false
+                        return false
+                    }
+                })
+                .error(R.drawable.ic_no_image_placeholder)
+                .into(binding.gifImageView)
+        }
         binding.descriptionTextView.text = mem.description
     }
 
     private fun bindState(state: LoadingState) {
-        when(state) {
+        when (state) {
             LoadingState.FIRST_MEM -> {
                 binding.backButton.setImageResource(R.drawable.ic_back_button_not_available)
             }

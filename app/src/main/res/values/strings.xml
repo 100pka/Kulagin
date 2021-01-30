@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Develovers Life</string>
+    <string name="developers_life">Developers Life</string>
+    <string name="test_description">Успешно запустились на технологии совсем не предназначенной для этих целей.</string>
 </resources>

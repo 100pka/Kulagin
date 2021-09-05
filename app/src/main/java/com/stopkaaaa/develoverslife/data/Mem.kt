@@ -12,5 +12,5 @@ data class Mem(
     val description: String,
 
     @SerialName("gifURL")
-    val gifUrl: String? = null
+    val gifUrl: String
 )

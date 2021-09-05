@@ -1,5 +1,7 @@
 package com.stopkaaaa.develoverslife.data
 
-enum class LoadingState {
-    FIRST_MEM, NEXT_MEM, LOADING, ERROR
+sealed class LoadingState {
+    data class Success(val isFirstMem: Boolean) : LoadingState()
+    data class Error(val description: String) : LoadingState()
+    object Loading : LoadingState()
 }

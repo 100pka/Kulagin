@@ -6,4 +6,8 @@
     <dimen name="margin_16">32dp</dimen>
     <dimen name="margin_32">32dp</dimen>
     <dimen name="text_size_16">16sp</dimen>
+    <dimen name="zero_size">0dp</dimen>
+    <dimen name="choose_mem_button_size">64dp</dimen>
+    <dimen name="card_view_corner_radius">8dp</dimen>
+    <dimen name="card_view_stroke_width">1dp</dimen>
 </resources>
